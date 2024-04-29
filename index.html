@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Home</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .header {
+            width: 100%;
+        }
+
+        .navbar {
+            width: 100%;
+            height: 55px;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .nav {
+            width: 97%;
+            height: max-content;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logo {
+            width: 152px;
+            height: max-content;
+            margin-top: .5%;
+            cursor: pointer;
+        }
+
+        .invato {
+            width: 100%;
+        }
+
+        .button {
+            width: 90px;
+            height: 34px;
+            border-radius: 5px;
+            background-color: #82B440;
+            outline: none;
+            border: none;
+            font-size: 15px;
+            font-weight: 500;
+            color: white;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #7aa93cf4;
+            transition: 0.2s;
+        }
+
+        .navbar2 {
+            width: 100%;
+            height: 145px;
+            background-color: #FFFFFF;
+            position: relative;
+            position: fixed;
+            top: 55px;
+            left: 0;
+        }
+
+
+        .p-parent {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .p-nav2 {
+            font-size: 350px;
+            text-align: center;
+            margin-top: -170px;
+            color: #FAFAFA;
+        }
+
+        .nav2 {
+            width: 92%;
+            height: 70px;
+            position: absolute;
+            left: 4%;
+            top: 25%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav3 {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo1 {
+            width: 155px;
+            height: max-content;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            width: 100%;
+        }
+
+        .ul {
+            width: 500px;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bar {
+            font-size: 23px;
+        }
+
+        .lis {
+            list-style: none;
+            font-size: 14px;
+            font-weight: 600;
+            width: max-content;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .lis:hover {
+            color: #FF3E79;
+        }
+
+        .dropdown1 {
+            width: 43%;
+            padding: 0px 0px 5px 0px;
+            background-color: white;
+            box-shadow: 2px 2px 10px 2px rgba(128, 128, 128, 0.136);
+            position: absolute;
+            z-index: 1;
+            top: 120%;
+            left: 0;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .home:hover+.dropdown1 {
+            opacity: 1;
+            visibility: visible;
+            top: 100%;
+        }
+
+        .dropdown1:hover {
+            visibility: visible;
+            opacity: 1;
+            top: 100%;
+        }
+
+        .ul2 {
+            width: 100%;
+            height: 100%;
+            border-top: 3px solid #FF3E79;
+        }
+
+        .li-p {
+            width: 100%;
+            height: 45px;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.403);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .li {
+            list-style: none;
+            margin-left: 10%;
+            font-size: 15px;
+            font-weight: 400;
+            color: rgb(128, 128, 128);
+        }
+
+        .li-p:hover li {
+            color: #FF3E79;
+        }
+
+        .color {
+            width: 0%;
+            height: 100%;
+            background-color: #FF3E79;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .li-p:hover .color {
+            animation: foji .3s linear;
+        }
+
+        @keyframes foji {
+            0% {
+                width: 0%;
+                opacity: 1;
+            }
+
+            25% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                width: 100%;
+            }
+        }
+
+        .none {
+            border: none;
+        }
+
+        .dropdown2 {
+            width: 43%;
+            padding: 0px 0px 5px 0px;
+            background-color: white;
+            box-shadow: 2px 2px 10px 2px rgba(128, 128, 128, 0.136);
+            position: absolute;
+            z-index: 1;
+            top: 120%;
+            left: 16%;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .about:hover+.dropdown2 {
+            opacity: 1;
+            visibility: visible;
+            top: 100%;
+        }
+
+        .dropdown2:hover {
+            visibility: visible;
+            opacity: 1;
+            top: 100%;
+        }
+
+        .dropdown3 {
+            width: 43%;
+            padding: 0px 0px 5px 0px;
+            background-color: white;
+            box-shadow: 2px 2px 10px 2px rgba(128, 128, 128, 0.136);
+            position: absolute;
+            z-index: 1;
+            top: 120%;
+            left: 33%;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .portfolio:hover+.dropdown3 {
+            opacity: 1;
+            visibility: visible;
+            top: 100%;
+        }
+
+        .dropdown3:hover {
+            visibility: visible;
+            opacity: 1;
+            top: 100%;
+        }
+
+        .dropdown4 {
+            width: 43%;
+            padding: 0px 0px 5px 0px;
+            background-color: white;
+            box-shadow: 2px 2px 10px 2px rgba(128, 128, 128, 0.136);
+            position: absolute;
+            z-index: 1;
+            top: 120%;
+            left: 55%;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .blog:hover+.dropdown4 {
+            opacity: 1;
+            visibility: visible;
+            top: 100%;
+        }
+
+        .dropdown4:hover {
+            visibility: visible;
+            opacity: 1;
+            top: 100%;
+        }
+
+        .navbar-none {
+            width: 100%;
+            height: 90px;
+            background-color: white;
+            box-shadow: 2px 2px 10px 5px rgba(128, 128, 128, 0.206);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .nav4 {
+            width: 94%;
+            height: max-content;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo3 {
+            width: 150px;
+            height: max-content;
+        }
+
+        .button-none {
+            width: 53px;
+            height: 45px;
+            outline: none;
+            border: none;
+            font-size: 25px;
+            color: white;
+            background-color: #FF3E79;
+        }
+
+        .img-parent {
+            width: 100%;
+            height: 80vh;
+            background-image: url(./images/1.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 201px;
+        }
+
+        .text-main {
+            width: 730px;
+            height: max-content;
+            margin: auto;
+        }
+
+        .h1-div {
+            width: 730px;
+            height: max-content;
+            margin: auto;
+            background-color: white;
+        }
+
+        .h1- {
+            font-size: 82px;
+            text-align: center;
+            margin-top: -2%;
+        }
+
+        .span3 {
+            color: #ED4F4E;
+        }
+
+        .p- {
+            font-size: 20px;
+            font-weight: 500;
+            color: white;
+            text-align: center;
+            margin-top: 4%;
+        }
+
+
+
+
+
+
+        .main2 {
+            width: 100%;
+            height: 100vh;
+            background-image: url(./images/2.jpg);
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+        }
+
+        .h1-2 {
+            font-size: 79px;
+        }
+
+        .span5 {
+            color: #EFF092;
+        }
+
+        .div2 {
+            width: 680px;
+        }
+        .main3{
+            width: 100%;
+            height: 100vh;
+            background-image: url(./images/3.jpg);
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .h1-div3{
+            width: 980px;
+            height: max-content;
+            background-color: white;
+        }
+        .span-3{
+            color: #0065D1;
+        }
+        .h1-3{
+            font-size: 80px;
+            font-weight: 700;
+            text-align: center;
+            margin-top: -1.5%;
+        }
+        .p-3{
+            font-size: 20px;
+            font-weight: 500;
+            color: white;
+            margin-top: 2%;
+        }
+        .main4 {
+            width: 100%;
+            height: 100vh;
+            background-image: url(./images/4.jpg);
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+        }
+        .span-4{
+            color: #59E195;
+        }
+        .div4{
+            width: 600px;
+        }
+        .main5 {
+            width: 100%;
+            height: 100vh;
+            background-image: url(./images/5.jpg);
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+        }
+        .span-5{
+            color: #E75CAF;
+        }
+        .main6 {
+            width: 100%;
+            height: 100vh;
+            background-image: url(./images/6.jpg);
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer{
+            width: 100%;
+            padding: 100px 0px 100px 0px;
+        }
+        .last-parent{
+            width: 95%;
+            margin: auto;
+        }
+        .logo-last{
+            width: 180px;
+            height: max-content;
+            cursor: pointer;
+            margin: auto;
+        }
+        .l-f{
+            width: 100%;
+        }
+        .p-f{
+            font-size: 15px;
+            font-weight: 400;
+            text-align: center;
+            margin-top: 1%;
+        }
+        .last-icon{
+            width: 160px;
+            margin: auto;
+            margin-top: 2.5%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .fouji{
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .fouji:hover{
+            color: #FF3272;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        @media screen and (max-width:1025px) {
+            .h1-div3{
+                width: 94%;
+            }
+        }
+
+        
+
+        @media screen and (max-width:800px) {
+            .text-main {
+                width: 100%;
+            }
+
+            .h1-div {
+                width: 680px;
+            }
+
+        }
+
+        @media screen and (max-width:768px) {
+            .navbar-none {
+                display: block;
+                display: flex;
+                position: fixed;
+                top: 55px;
+                left: 0;
+            }
+
+            .navbar2 {
+                display: none;
+            }
+            .img-parent{
+                margin-top: 100px;
+            }
+
+            .h1-div {
+                width: 400px;
+            }
+
+            .h1- {
+                font-size: 45px;
+            }
+            .h1-div3{
+                width: 500px;
+            }
+            .h1-3{
+                font-size: 39px;
+            }
+
+        }
+        @media screen and (max-width:550px) {
+            .h1-div3{
+                width: 90%;
+            }
+        }
+
+
+        @media screen and (max-width:450px) {
+
+            .h1-div {
+                width: 87%;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="navbar">
+            <div class="nav">
+                <div class="logo">
+                    <img class="envato"
+                        src="./images/envato_market-dde916a48af7413e54aa058fe7ae6856752fca799da4bec355f00aea904bfa19.svg" alt="">
+                </div>
+                <button class="button">Buy now</button>
+            </div>
+        </div>
+        <div class="navbar2">
+            <div class="p-parent">
+                <p class="p-nav2">LIMERICK</p>
+            </div>
+            <div class="nav2">
+
+                <div class="nav3">
+                    <div class="logo1">
+                        <img class="logo-img" src="./images/logo.png" alt="">
+                    </div>
+                    <ul class="ul">
+                        <li style="color: #FF3E79;" class="lis home">HOME</li>
+                        <div class="dropdown1">
+                            <ul class="ul2">
+                                <div class="li-p">
+                                    <li class="li">Creative Home</li>
+                                    <div class="color"></div>
+                                </div>
+                                <div class="li-p">
+                                    <li class="li">Designer Home</li>
+                                    <div class="color"></div>
+                                </div>
+                                <div class="li-p">
+                                    <li class="li">Portfolio Home</li>
+                                    <div class="color"></div>
+                                </div>
+                                <div class="li-p">
+                                    <li class="li">Parallax Home</li>
+                                    <div class="color"></div>
+                                </div>
+                                <div class="li-p">
+                                    <li class="li">Carousel Home</li>
+                                    <div class="color"></div>
+
+                                </div>
+                                <div class="li-p none">
+                                    <li class="li">Header Styles</li>
+                                    <div class="color"></div>
+
+                                </div>
+                            </ul>
+                        </div>
+                        <li class="lis about">ABOUT</li>
+                        <div class="dropdown2">
+                            <ul class="ul2">
+                                <div class="li-p">
+                                    <li class="li">About Us</li>
+                                    <div class="color"></div>
+                                </div>
+                                <div class="li-p none">
+                                    <li class="li">Error Page</li>
+                                    <div class="color"></div>
+                                </div>
+
+                            </ul>
+                        </div>
+                        <li class="lis portfolio">PORTFOLIO</li>
+                        <div class="dropdown3">
+                            <ul class="ul2">
+                                <div class="li-p">
+                                    <li class="li">Portfolio Left Sidebar</li>
+                                    <div class="color"></div>
+                                </div>
+                                <div class="li-p">
+                                    <li class="li">Portfolio Right Sidebar</li>
+                                    <div class="color"></div>
+                                </div>
+                                <div class="li-p">
+                                    <li class="li">Portfolio Centered</li>
+                                    <div class="color"></div>
+                                </div>
+                                <div class="li-p">
+                                    <li class="li">Portfolio Slide</li>
+                                    <div class="color"></div>
+                                </div>
+                                <div class="li-p none">
+                                    <li class="li">Portfolio Masonery</li>
+                                    <div class="color"></div>
+
+                                </div>
+                            </ul>
+                        </div>
+                        <li class="lis blog">BLOG</li>
+                        <div class="dropdown4">
+                            <ul class="ul2">
+                                <div class="li-p">
+                                    <li class="li">Blog With Sidebar</li>
+                                    <div class="color"></div>
+                                </div>
+                                <div class="li-p">
+                                    <li class="li">Blog Grid</li>
+                                    <div class="color"></div>
+                                </div>
+                                <div class="li-p">
+                                    <li class="li">Blog List</li>
+                                    <div class="color"></div>
+                                </div>
+                                <div class="li-p">
+                                    <li class="li">Blog Masonry</li>
+                                    <div class="color"></div>
+                                </div>
+                                <div class="li-p none">
+                                    <li class="li">Blog Single</li>
+                                    <div class="color"></div>
+
+                                </div>
+                            </ul>
+                        </div>
+                        <li class="lis">CONTACT US</li>
+                        <i class="fa-solid fa-bars bar"></i>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-none">
+            <div class="nav4">
+                <div class="logo3">
+                    <img class="logo-img" src="./images/logo.png" alt="">
+                </div>
+                <button class="button-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="img-parent">
+            <div class="text-main">
+                <div class="h1-div">
+                    <h1 class="h1-"> <span class="span3">CREATIVE</span> DESIGN
+                    </h1>
+                </div>
+                <p class="p-">Branding Design</p>
+            </div>
+        </div>
+    </header>
+    <section class="main2">
+        <div class="text-main text2">
+            <div class="h1-div div2">
+                <h1 class="h1- h1-2"> <span class="span5">MODERN </span> DESIGN
+                </h1>
+            </div>
+            <p class="p-">Branding Design</p>
+        </div>
+
+    </section>
+    <section class="main3">
+        <div class="h1-div3">
+            <h1 class="h1-3"> <span class="span-3">BRANDING</span> COLLECTION
+            </h1>
+        </div>
+        <p class="p-3">Branding Design
+        </p>
+
+    </section>
+    <section class="main4">
+        <div class="text-main">
+            <div class="h1-div div4">
+                <h1 class="h1- h1-2"> <span class="span-4">CUP OF 
+                </span> COFFE
+                </h1>
+            </div>
+            <p class="p-">Branding Design</p>
+        </div>
+
+    </section>
+    <section class="main5">
+        <div class="text-main text2">
+            <div class="h1-div">
+                <h1 class="h1- h1-2"> <span class="span-5">MINIMAL  </span> DESIGN
+                </h1>
+            </div>
+            <p class="p-">Branding Design</p>
+        </div>
+
+    </section>
+    <section class="main6">
+        <div class="h1-div3">
+            <h1 class="h1-3"> <span class="span-3">RESTARUNT </span> COLLECTION
+            </h1>
+        </div>
+        <p class="p-3">Branding Design
+        </p>
+
+    </section>
+    <div class="footer">
+        <div class="last-parent">
+            <div class="logo-last">
+                <img class="l-f" src="./images/logo.png" alt="">
+            </div>
+            <p class="p-f">© Copyright 2019 Limerick. All Rights Reserved
+            </p>
+            <div class="last-icon">
+                <i class="fa-brands fa-facebook-f fouji"></i>
+                <i class="fa-brands fa-twitter fouji"></i>
+                <i class="fa-brands fa-google-plus-g fouji"></i>
+                <i class="fa-solid fa-p fouji"></i>
+                <i class="fa-solid fa-globe fouji"></i>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
